@@ -3,7 +3,7 @@ package com.akumar.ghbrowser.util
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.akumar.ghbrowser.data.repository.RepoRepository
-import com.akumar.ghbrowser.ui.GHRepoListScreen.RepoViewModel
+import com.akumar.ghbrowser.ui.repoListScreen.RepoViewModel
 
 class RepoViewModelFactory(
     private val repository: RepoRepository

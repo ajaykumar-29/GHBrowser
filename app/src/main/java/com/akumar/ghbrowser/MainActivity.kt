@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.akumar.ghbrowser.ui.GHBrowser
-import com.akumar.ghbrowser.ui.GHRepoListScreen.RepoViewModel
+import com.akumar.ghbrowser.ui.repoListScreen.RepoViewModel
 import com.akumar.ghbrowser.util.RepoViewModelProvider
 import com.akumar.ghbrowser.ui.theme.GHBrowserTheme
 

@@ -1,24 +1,28 @@
 package com.akumar.ghbrowser.data.repository
 
-import android.util.Log
 import com.akumar.ghbrowser.data.local.Cacher
 import com.akumar.ghbrowser.data.local.db.entities.GHRepoEntity
 import com.akumar.ghbrowser.data.remote.api.GitHubApiService
+import com.akumar.ghbrowser.data.remote.model.GHRepoResult
 
 class RepoRepository(
-    private val api: GitHubApiService,
-    private val cacher: Cacher
+    private val api: GitHubApiService, private val cacher: Cacher
 ) {
-    suspend fun fetchRepos(): List<GHRepoEntity> {
+    suspend fun fetchRepos(): GHRepoResult {
         return try {
             val repos = api.getRepos()
-            Log.d("TAG", "fetchRepos: $repos")
             cacher.cacheRepos(repos.items)
-            cacher.getCachedRepos()
+            GHRepoResult.Success(cacher.getCachedRepos())
         } catch (e: Exception) {
-            e.printStackTrace()
-            Log.d("TAG", "fetchRepos: Exception: $e")
-            cacher.getCachedRepos()
+            val cachedData = cacher.getCachedRepos()
+            if (cachedData.isEmpty()) {
+                GHRepoResult.Error("Error fetching repos: Check Internet connection")
+            } else {
+                GHRepoResult.Success(
+                    cacher.getCachedRepos(), "Unable to fetch from server. Showing cached data."
+                )
+            }
+
         }
     }
 

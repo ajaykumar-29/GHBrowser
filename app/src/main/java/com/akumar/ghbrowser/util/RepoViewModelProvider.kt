@@ -8,7 +8,7 @@ import com.akumar.ghbrowser.data.local.Cacher
 import com.akumar.ghbrowser.data.local.db.RepoDatabase
 import com.akumar.ghbrowser.data.remote.api.NetworkService
 import com.akumar.ghbrowser.data.repository.RepoRepository
-import com.akumar.ghbrowser.ui.GHRepoListScreen.RepoViewModel
+import com.akumar.ghbrowser.ui.repoListScreen.RepoViewModel
 
 object RepoViewModelProvider {
 
